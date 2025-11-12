@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@theme {
+  /* Text Colors */
+  --text-primary: #37352f;
+  --text-secondary: #898986;
+  --text-tertiary: #acaba9;
+  --text-disabled: #d5d5d4;
+  --text-inverse: #ffffff;
+
+  /* Border Colors */
+  --border-default: #e6e6e6;
+
+  /* Background Colors */
+  --bg-surface: #ffffff;
+  --bg-muted: #f5f5f5;
+  --bg-subtle: #f1f0f1;
+
+  /* Semantic Colors */
+  --color-primary: #0d99ff;
+  --color-success: #14ae5c;
+  --color-error: #f24822;
+  --color-warning: #ffcd29;
+
+  /* Font Sizes */
+  --font-h1: 30px;
+  --font-h2: 24px;
+  --font-h3: 20px;
+  --font-body-lg: 16px;
+  --font-body-md: 14px;
+  --font-body-sm: 13px;
+  --font-small-md: 12px;
+  --font-small-sm: 11px;
+  --font-small-xs: 10px;
+
+  /* Line Heights */
+  --lh-h1: 40px;
+  --lh-h2: 32px;
+  --lh-h3: 32px;
+  --lh-body: 24px;
+  --lh-small: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px #0000000d;
+  --shadow-md: 0 4px 6px #0000001a;
+  --shadow-lg: 0 10px 15px #00000026;
+}
+
+:root {
+  font-family: inter, system-ui;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: var(--font-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: -0.021em;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: var(--font-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: -0.019em;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--font-h3);
+  line-height: var(--lh-h3);
+  letter-spacing: -0.017em;
+  font-weight: 600;
+}
+
+p {
+  font-size: var(--font-body-lg);
+  line-height: var(--lh-body);
+  letter-spacing: -0.011em;
+  font-weight: 400;
+}

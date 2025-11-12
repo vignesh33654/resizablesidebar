@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+
+@theme {
+  --color-primary: #000000;
+  --color-secondary: #ffffff;
+}
+
+/* default css styles */
+:root {
+  font-family: inter, system-ui;
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

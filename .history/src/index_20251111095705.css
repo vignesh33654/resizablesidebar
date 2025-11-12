@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+
+  --color-text-Primary: #37352f;
+  --color-text-Secondary: #898986;
+  --color-text-Tertiary: #acaba9;
+  --color-text-Disabled: #d5d5d4;
+
+  /* Border Colors */
+  --color-border-Primary: #e6e6e6;
+
+  /* Background Colors */
+  --color-Bg-0: #ffffff;
+  --color-Bg-1: #f5f5f5;
+  --color-Bg-2: #f1f0f1;
+
+  /* Primitive Colors */
+  --color-color-primary: #0d99ff;
+  --color-color-success: #14ae5c;
+  --color-color-failure: #f24822;
+  --color-color-warning: #ffcd29;
+
+  /* Font Sizes */
+  --font-size-h1: 30px;
+  --font-size-h2: 24px;
+  --font-size-h3: 20px;
+  --font-size-body-16: 16px;
+  --font-size-body-14: 14px;
+  --font-size-body-13: 13px;
+  --font-size-small-12: 12px;
+  --font-size-small-11: 11px;
+  --font-size-small-10: 10px;
+
+  /* Line Heights */
+  --line-height-h1: 40px;
+  --line-height-h2: 32px;
+  --line-height-h3: 32px;
+  --line-height-body: 24px;
+  --line-height-small: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px #0000000d;
+  --shadow-md: 0 4px 6px #0000001a;
+  --shadow-lg: 0 10px 15px #00000026;
+
+}
+
+/* default css styles */
+:root {
+  font-family: inter, system-ui;
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+   h1 {
+    font-size: var(--font-size-h1);
+    line-height: var(--line-height-h1);
+    letter-spacing: -2.1%;
+    font-weight: 600;
+    @apply text-text-Primary;
+  }
+
+  h2 {
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
+    letter-spacing: -1.9%;
+    font-weight: 600;
+    @apply text-text-Primary;
+  }
+
+  h3 {
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
+    letter-spacing: -1.7%;
+    font-weight: 600;
+    @apply text-text-Primary;
+  }
+
+  p {
+    font-size: var(--font-size-body-16);
+    line-height: var(--line-height-body);
+    letter-spacing: -1.1%;
+    font-weight: 400;
+  }
+
+  text-color {
+    --Primary: var(--color-text-Primary);
+    --text-color-Secondary: var(--color-text-Secondary);
+    --text-color-Tertiary: var(--color-text-Tertiary);
+    --text-color-Disabled: var(--color-text-Disabled);
+  }
+
+  bg-color {
+    --bg-color-Primary: var(--color-Bg-0);
+    --bg-color-Secondary: var(--color-Bg-1);
+    --bg-color-Tertiary: var(--color-Bg-2);
+  }
+  
+  primitive-color {
+    --primitive-color-Primary: var(--color-color-primary);
+    --primitive-color-Secondary: var(--color-color-secondary);
+    --primitive-color-Tertiary: var(--color-color-tertiary);
+    --primitive-color-Disabled: var(--color-color-disabled);
+  }
+}
