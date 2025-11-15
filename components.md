@@ -2,8 +2,12 @@
 
 These are the official rules for creating components in this design system. Every component MUST follow this structure.
 
-## 1. Component Folder Structure
-Simple components = single file
+## 1.. NAMING CONVENTIONS
+
+- **Files**: kebab-case (`button.tsx`)
+- **Components**: PascalCase (`Button`, `ButtonIcon`)
+- **Props**: camelCase, use boolean prefix (`isLoading`, `isDisabled`)
+- **Constants**: UPPER_SNAKE_CASE
 
 ## 2. TypeScript Rules
 
@@ -13,7 +17,6 @@ Simple components = single file
 
 - Every component MUST accept `className`
 - MUST merge classes using `cn()`
-- NEVER hardcode colors or Typography
 - MUST use custom design token via Tailwind classes, if not there use hex arbitrary value
 
 ## 4. CVA Variant System (Optional)
@@ -76,12 +79,21 @@ Every component MUST be accessible by default.
 - Keyboard navigation must Just Work
 - MUST use visible focus ring: `focus-visible:ring-[3px]`, `focus-visible:ring-ring/50`, `focus-visible:border-ring`
 - Required Keyboard Support: Enter, Escape, Space, ArrowUp / ArrowDown, Tab / Shift+Tab
-
+- Use Radix If:
+    Component requires keyboard navigation
+    Accessibility is a requirement (WCAG AA/AAA)
+    Component is complex (modals, dropdowns, tooltips)
+  
 ## 11. Error & Validation States
 Input-like components MUST support `aria-invalid="true"`, `aria-invalid:border-destructive`, `aria-invalid:ring-destructive/20`
 
 ## 12. Disabled State Rules
 Disabled components MUST use `disabled:pointer-events-none` and `disabled:opacity-50`. Disabled = no hover, no focus, no keyboard.
+
+## 13. ANIMATION & TRANSITIONS
+- Use consistent timing: `duration-200` as default
+- Define global animation constants (`ANIMATION_DURATIONS`)
+- **Mandatory**: Respect `prefers-reduced-motion` via `motion-safe:` and `motion-reduce:`
 
 
 ## Decision Checklist (ask these BEFORE you create a component)
