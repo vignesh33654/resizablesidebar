@@ -31,7 +31,7 @@
       "@/hooks/*": ["./src/hooks/*"],
       "@/lib/*": ["./src/lib/*"],
       "@/components/*": ["./src/components/*"],
-      "@/assets/*": ["./src/assets/*"]
+      "@/assets/*": ["./public/assets/*"]
     }
   },
   "include": ["src"]
