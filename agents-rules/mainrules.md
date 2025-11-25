@@ -30,7 +30,7 @@ You are an expert in TypeScript, React Native, Tailwindcss.
 
 ## 📂 File Structure
 
-Follow this structure for organization:
+Follow this structure for organization: create only if you need it
 
 ```text
 my-app/
@@ -46,4 +46,4 @@ my-app/
 │   ├── store/       # State management
 │   ├── types/       # TS types
 │   └── utils/       # Helpers & constants
-```
+
