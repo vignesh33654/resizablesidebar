@@ -8,6 +8,7 @@ interface UseResizableProps {
     maxSize?: number;
     onSizeChange?: (size: number) => void;
     variableName?: string;
+    persistenceKey?: string;
 }
 
 // Helper function to manage timeouts consistently
@@ -85,8 +86,20 @@ export function useResizable({
     maxSize = 400,
     onSizeChange,
     variableName,
+    persistenceKey,
 }: UseResizableProps = {}) {
-    const [size, setSize] = React.useState(defaultSize);
+    const [size, setSize] = React.useState(() => {
+        if (persistenceKey) {
+            const savedSize = localStorage.getItem(persistenceKey);
+            if (savedSize) {
+                const parsed = parseFloat(savedSize);
+                if (!isNaN(parsed)) {
+                    return Math.max(minSize, Math.min(maxSize, parsed));
+                }
+            }
+        }
+        return defaultSize;
+    });
     const [isDragging, setIsDragging] = React.useState(false);
     const [isKeyboardResizing, setIsKeyboardResizing] = React.useState(false);
     const [isDoubleClickResetting, setIsDoubleClickResetting] =
@@ -112,8 +125,12 @@ export function useResizable({
 
             // Use debounced callback to prevent excessive external updates
             debouncedOnSizeChange(clampedSize);
+
+            if (persistenceKey) {
+                localStorage.setItem(persistenceKey, String(clampedSize));
+            }
         },
-        [minSize, maxSize, debouncedOnSizeChange]
+        [minSize, maxSize, debouncedOnSizeChange, persistenceKey]
     );
 
     // Use layoutEffect to prevent layout flicker - DOM updates happen synchronously

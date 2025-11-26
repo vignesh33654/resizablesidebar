@@ -180,6 +180,7 @@ function Sidebar({
     minSize: 220,
     maxSize: 400,
     variableName: "--sidebar-width",
+    persistenceKey: "sidebar-width",
   });
 
   if (collapsible === "none") {
