@@ -7,8 +7,7 @@ import { PanelLeftIcon } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/use-mobile";
 
-import { useResizable } from "@/hooks/use-resizable";
-import { ResizeHandle } from "@/components/ui/resize-handle";
+import { ResizablePanel } from "@/components/ui/resizable-panel";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -167,45 +166,26 @@ function Sidebar({
   collapsible?: "offcanvas" | "icon" | "none";
 }) {
   const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
-  const {
-    isDragging,
-    isKeyboardResizing,
-    isDoubleClickResetting,
-    isHovering,
-    showTooltip,
-    elementRef: sidebarRef,
-    handleProps: dragHandleProps,
-  } = useResizable({
-    defaultSize: 220,
-    minSize: 220,
-    maxSize: 400,
-    variableName: "--sidebar-width",
-    persistenceKey: "sidebar-width",
-  });
 
   if (collapsible === "none") {
     return (
-      <div
-        ref={sidebarRef}
+      <ResizablePanel
         data-slot="sidebar"
         className={cn(
-          "bg-sidebar text-sidebar-foreground flex h-full w-(--sidebar-width) flex-col relative",
+          "bg-sidebar text-sidebar-foreground h-full",
           className
         )}
+        defaultSize={220}
+        minSize={220}
+        maxSize={400}
+        variableName="--sidebar-width"
+        persistenceKey="sidebar-width"
+        side={side}
+        resizable={!isMobile}
         {...props}
       >
         {children}
-        {!isMobile && (
-          <ResizeHandle
-            {...dragHandleProps}
-            isHovering={isHovering}
-            isDragging={isDragging}
-            isKeyboardResizing={isKeyboardResizing}
-            showTooltip={showTooltip}
-            side={side}
-          />
-        )}
-      </div>
+      </ResizablePanel>
     );
   }
 
@@ -247,30 +227,22 @@ function Sidebar({
       <div
         data-slot="sidebar-gap"
         className={cn(
-          "relative w-(--sidebar-width) bg-transparent",
-          ((!isDragging && !isKeyboardResizing) || isDoubleClickResetting) &&
-          "transition-none",
+          "relative w-(--sidebar-width) bg-transparent transition-none",
           "group-data-[collapsible=offcanvas]:w-0",
           "group-data-[side=right]:rotate-180",
           variant === "floating" || variant === "inset"
             ? "group-data-[collapsible=icon]:w-[calc(var(--sidebar-width-icon)+(--spacing(4)))]"
             : "group-data-[collapsible=icon]:w-(--sidebar-width-icon)"
         )}
-        {...(((!isDragging && !isKeyboardResizing) ||
-          isDoubleClickResetting) && {
-          style: {
-            transitionTimingFunction: "cubic-bezier(.215, .61, .355, 1)",
-            transitionDuration: "200ms",
-          },
-        })}
+        style={{
+          transitionTimingFunction: "cubic-bezier(.215, .61, .355, 1)",
+          transitionDuration: "200ms",
+        }}
       />
-      <div
-        ref={sidebarRef}
+      <ResizablePanel
         data-slot="sidebar-container"
         className={cn(
-          "fixed inset-y-0 z-10 hidden h-svh w-(--sidebar-width) md:flex",
-          ((!isDragging && !isKeyboardResizing) || isDoubleClickResetting) &&
-          "transition-none",
+          "fixed inset-y-0 z-10 hidden h-svh md:flex",
           side === "left"
             ? "left-0 group-data-[collapsible=offcanvas]:left-[calc(var(--sidebar-width)*-1)]"
             : "right-0 group-data-[collapsible=offcanvas]:right-[calc(var(--sidebar-width)*-1)]",
@@ -280,13 +252,13 @@ function Sidebar({
             : "group-data-[collapsible=icon]:w-(--sidebar-width-icon) group-data-[side=left]:border-r group-data-[side=right]:border-l",
           className
         )}
-        {...(((!isDragging && !isKeyboardResizing) ||
-          isDoubleClickResetting) && {
-          style: {
-            transitionTimingFunction: "cubic-bezier(.215, .61, .355, 1)",
-            transitionDuration: "200ms",
-          },
-        })}
+        defaultSize={220}
+        minSize={220}
+        maxSize={400}
+        variableName="--sidebar-width"
+        persistenceKey="sidebar-width"
+        side={side}
+        resizable={!isMobile}
         {...props}
       >
         <div
@@ -296,17 +268,7 @@ function Sidebar({
         >
           {children}
         </div>
-        {!isMobile && (
-          <ResizeHandle
-            {...dragHandleProps}
-            isHovering={isHovering}
-            isDragging={isDragging}
-            isKeyboardResizing={isKeyboardResizing}
-            showTooltip={showTooltip}
-            side={side}
-          />
-        )}
-      </div>
+      </ResizablePanel>
     </div>
   );
 }
